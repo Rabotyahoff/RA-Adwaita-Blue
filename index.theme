@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=RA-Adwaita Blue 12.10
+Comment=Ubuntu RA-Adwaita Blue 12.10 theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=RA-Adwaita Blue 12.10
+MetacityTheme=RA-Adwaita Blue 12.10
+IconTheme=ubuntu-mono-dark
+CursorTheme=DMZ-White
+ButtonLayout=close,minimize,maximize:

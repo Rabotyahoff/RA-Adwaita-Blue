@@ -1,0 +1,9 @@
+.menuitem,
+.menu .menuitem {
+	text-shadow: none;
+}
+.menuitem:hover,
+.menu .menuitem:hover {
+	text-shadow: 0 -1 @menupopitem_selected_textshadow_color;
+}
+

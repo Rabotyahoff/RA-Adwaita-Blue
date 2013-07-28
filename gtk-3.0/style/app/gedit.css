@@ -1,0 +1,126 @@
+@define-color notebook_tab_gradient_b		shade (@bg_color, 0.95);
+
+GeditWindow .pane-separator,
+GeditWindow .pane-separator:hover {
+}
+
+GeditPanel.title GtkLabel {
+}
+
+GeditPanel .toolbar {
+	border-style: none;
+	background-color: transparent;
+}
+
+GeditDocumentsPanel .view {
+}
+
+GeditDocumentsPanel .view:backdrop {
+}
+
+GeditWindow .notebook {
+	padding: 1px;
+}
+
+GeditPanel .notebook {
+	padding: 3px;
+}
+
+GeditPanel .notebook tab,
+GeditWindow .notebook tab {
+}
+
+
+
+/****************************
+ * Gedit window notebook *
+ ****************************/
+
+@define-color gedit_notebook_bg_color		@base_color;
+@define-color gedit_notebook_inactive_bg_color	mix (@bg_color, @base_color, 0.75);
+@define-color gedit_notebook_fg_color		@text_color;
+
+GeditWindow .notebook,
+GeditWindow .notebook:backdrop {
+	background-color: @gedit_notebook_bg_color;
+	border-top-color: shade (@gedit_notebook_bg_color, 0.80);
+	border-right-color: @transparent;
+	border-bottom-color: @transparent;
+	border-left-color: @transparent;
+	-unico-border-gradient: none;
+	-unico-inner-stroke-color: @transparent;
+}
+
+GeditWindow .notebook tab,
+GeditWindow .notebook tab:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@gedit_notebook_inactive_bg_color, 0.93)),
+					color-stop (0.80, shade (@gedit_notebook_inactive_bg_color, 0.91)),
+					to (shade (@gedit_notebook_inactive_bg_color, 0.88)));
+	background-color: shade (@gedit_notebook_inactive_bg_color, 0.90);
+	color: @gedit_notebook_fg_color;
+
+	border-color: shade (@gedit_notebook_inactive_bg_color, 0.85);
+	-unico-border-gradient: none;
+	-unico-inner-stroke-color: @transparent;
+}
+GeditWindow .notebook tab:active,
+GeditWindow .notebook tab:active:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (@gedit_notebook_bg_color),
+					to (@gedit_notebook_bg_color));
+	background-color: @gedit_notebook_bg_color;
+	color: @gedit_notebook_fg_color;
+	border-color: shade (@gedit_notebook_bg_color, 0.81);
+	-unico-border-gradient: none;
+}
+GeditWindow .notebook tab GtkLabel,
+GeditWindow .notebook tab GtkLabel:backdrop {
+	color: mix (@gedit_notebook_bg_color, @gedit_notebook_fg_color, 0.75);
+}
+GeditWindow .notebook tab GtkLabel:active,
+GeditWindow .notebook tab GtkLabel:active:backdrop {
+	color: @gedit_notebook_fg_color;
+}
+
+/* Notebook tab button */
+GeditWindow .notebook tab .button,
+GeditWindow .notebook tab .button:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@gedit_notebook_bg_color, 1.05)),
+					to (shade (@gedit_notebook_bg_color, 0.95)));
+	color: mix (@gedit_notebook_bg_color, @gedit_notebook_fg_color, 0.5);
+	text-shadow: none;
+	transition: 0ms ease-in-out;
+	border-style: solid;
+	-unico-border-gradient: none;
+	-unico-inner-stroke-color: shade (@gedit_notebook_bg_color, 1.075);
+	-unico-inner-stroke-width: 1px 0 0 0;
+}
+GeditWindow .notebook tab .button:hover,
+GeditWindow .notebook tab .button:hover:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@gedit_notebook_bg_color, 1.0)),
+					to (shade (@gedit_notebook_bg_color, 0.9)));
+	color: @gedit_notebook_fg_color;
+	border-color: shade (@gedit_notebook_bg_color, 0.725);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@gedit_notebook_bg_color, 0.8)),
+					to (shade (@gedit_notebook_bg_color, 0.65)));
+}
+GeditWindow .notebook tab .button:active,
+GeditWindow .notebook tab .button:active:hover,
+GeditWindow .notebook tab .button:active:backdrop,
+GeditWindow .notebook tab .button:active:hover:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@gedit_notebook_bg_color, 0.8)),
+					to (shade (@gedit_notebook_bg_color, 0.975)));
+	color: @gedit_notebook_fg_color;
+	border-color: shade (@gedit_notebook_bg_color, 0.725);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@gedit_notebook_bg_color, 0.75)),
+					to (shade (@gedit_notebook_bg_color, 0.7)));
+	-unico-inner-stroke-color: shade (@gedit_notebook_bg_color, 0.725);
+	-unico-focus-outer-stroke: @transparent;
+}
+

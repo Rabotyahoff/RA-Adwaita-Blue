@@ -1,0 +1,13 @@
+style "mozilla_toolbar" = "default" {
+	engine "murrine" {
+		gradient_shades = {1.0,1.0,1.0,1.0}
+	}
+}
+style "mozilla_button" {
+	fg[NORMAL] = mix(0.5, @fg_color, @bg_color)
+}
+
+widget	"MozillaGtkWidget*Toolbar*" style:highest "mozilla_toolbar" # workaround for add-on bar
+widget	"MozillaGtkWidget*Statusbar*" style:highest "mozilla_toolbar" # workaround for add-on bar
+widget	"MozillaGtkWidget*Button*" style:highest "mozilla_button"
+

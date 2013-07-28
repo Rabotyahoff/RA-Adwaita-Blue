@@ -1,0 +1,591 @@
+/***********
+ * General *
+ ***********/
+
+.nemo-canvas-item,
+.nautilus-canvas-item {
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.nemo-canvas-item:selected:focused,
+.nautilus-canvas-item:selected:focused {
+	border-style: solid;
+	border-width: 1px;
+	border-color: shade (@selected_bg_color, 0.8);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@selected_bg_color, 0.8)),
+					to (shade (@selected_bg_color, 0.8)));
+}
+.nemo-canvas-item:selected:backdrop,
+.nautilus-canvas-item:selected:backdrop {
+	border-style: none;
+}
+
+
+/***********
+ * Desktop *
+ ***********/
+
+.nemo-desktop.nemo-canvas-item:backdrop,
+.nemo-desktop.nemo-canvas-item,
+.nautilus-desktop.nautilus-canvas-item:backdrop,
+.nautilus-desktop.nautilus-canvas-item {
+	color: white;
+	text-shadow: 1 1 alpha (black, 0.5);
+}
+
+.nemo-desktop.nemo-canvas-item:active:backdrop,
+.nemo-desktop.nemo-canvas-item:active,
+.nemo-desktop.nemo-canvas-item:selected:backdrop,
+.nemo-desktop.nemo-canvas-item:selected,
+.nautilus-desktop.nautilus-canvas-item:active:backdrop,
+.nautilus-desktop.nautilus-canvas-item:active,
+.nautilus-desktop.nautilus-canvas-item:selected:backdrop,
+.nautilus-desktop.nautilus-canvas-item:selected {
+	background-color: mix (@unfocused_selected_bg_color, white, 0.5);
+	color: @unfocused_selected_fg_color;
+	text-shadow: none;
+}
+.nemo-desktop.nemo-canvas-item:selected:focused,
+.nautilus-desktop.nautilus-canvas-item:selected:focused {
+	background-color: @selected_bg_color;
+	color: @selected_fg_color;
+	text-shadow: none;
+}
+
+.nemo-desktop.nemo-canvas-item:active,
+.nemo-desktop.nemo-canvas-item:selected,
+.nautilus-desktop.nautilus-canvas-item:active,
+.nautilus-desktop.nautilus-canvas-item:selected {
+	text-shadow: none;
+}
+
+
+
+/*************
+ * Fm window *
+ *************/
+
+MarlinViewWindow *,
+NemoWindow *,
+NautilusWindow * {
+	-GtkPaned-handle-size: 1;
+	-GtkTreeView-horizontal-separator: 5;
+}
+NemoWindow GtkContainer,
+NautilusWindow GtkContainer {
+	background-color: @fmwindow_bg_color;
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (@fmwindow_bg_top_color),
+					color-stop (0.05, @fmwindow_bg_top_color),
+					color-stop (0.975, @fmwindow_bg_bottom_color),
+					to (@fmwindow_bg_bottom_color));
+	color: @fmwindow_fg_color;
+}
+MarlinViewWindow .pane-separator,
+NemoWindow .pane-separator,
+NautilusWindow .pane-separator {
+	background-color: @fmpaneseparator_color;
+	background-image: none;
+}
+NemoWindow GtkStatusbar GtkContainer,
+NautilusWindow GtkStatusbar GtkContainer {
+	color: inherit;
+}
+
+
+
+/*************
+ * Main view *
+ *************/
+
+NemoWindow NemoView.frame,
+NautilusWindow NautilusView.frame {
+	border-width: 0;
+}
+
+MarlinViewWindow .view:backdrop,
+MarlinViewWindow .view,
+NemoWindow .view:backdrop,
+NemoWindow .view,
+NautilusWindow .view:backdrop,
+NautilusWindow .view {
+	background-color: @fmmainview_bg_color;
+	background-image: none;
+	color: @fmmainview_fg_color;
+}
+MarlinViewWindow .view.rubberband,
+NemoWindow .view.rubberband,
+NautilusWindow .view.rubberband {
+	background-color: alpha (@selected_bg_color, 0.35);
+	border-color: shade (@selected_bg_color, 0.9);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 0;
+}
+MarlinViewWindow .view:selected:focused,
+NemoWindow .view:selected:focused,
+NautilusWindow .view:selected:focused {
+	background-color: @selected_bg_color;
+	background-image: none;
+	color: @selected_fg_color;
+}
+MarlinViewWindow GtkTreeView.view:selected:focused,
+NemoWindow GtkTreeView.view:selected:focused,
+NautilusWindow GtkTreeView.view:selected:focused {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@selected_bg_color, 1.05)),
+					to (shade (@selected_bg_color, 0.95)));
+}
+MarlinViewWindow .view:selected,
+NemoWindow .view:selected,
+NautilusWindow .view:selected {
+	background-color: @unfocused_selected_bg_color;
+	background-image: none;
+	color: @unfocused_selected_fg_color;
+}
+MarlinViewWindow .view:selected:backdrop,
+NemoWindow .view:selected:backdrop,
+NautilusWindow .view:selected:backdrop {
+	background-color: mix (@fmmainview_fg_color, @fmmainview_bg_color, 0.85);
+	background-image: none;
+	color: @fmmainview_fg_color;
+}
+
+NemoTrashBar.info,
+NemoXContentBar.info,
+NemoSearchBar.info,
+NemoQueryEditor.info,
+NautilusTrashBar.info,
+NautilusXContentBar.info,
+NautilusSearchBar.info,
+NautilusQueryEditor.info {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@info_bg_color, 1.0)),
+					to (shade (@info_bg_color, 1.05)));
+	background-color: @info_bg_color;
+	color: @info_fg_color;
+	border-radius: 0;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-bottom-color: shade (@info_bg_color, 0.8);
+
+	-unico-border-gradient: none;
+	-unico-inner-stroke-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@info_bg_color, 1.0)),
+					to (shade (@info_bg_color, 1.05)));
+}
+
+NemoTrashBar.info:backdrop,
+NemoXContentBar.info:backdrop,
+NemoSearchBar.info:backdrop,
+NemoQueryEditor.info:backdrop,
+NautilusTrashBar.info:backdrop,
+NautilusXContentBar.info:backdrop,
+NautilusSearchBar.info:backdrop,
+NautilusQueryEditor.info:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fmmainview_bg_color, 0.95)),
+					to (shade (@fmmainview_bg_color, 0.95)));
+	background-color: shade (@fmmainview_bg_color, 0.95);
+	border-bottom-color: shade (@fmmainview_bg_color, 0.85);
+
+	-unico-inner-stroke-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fmmainview_bg_color, 0.95)),
+					to (shade (@fmmainview_bg_color, 0.95)));
+	color: @fmmainviewfg_color;
+}
+
+NemoSearchBar .entry,
+NautilusSearchBar .entry {
+}
+
+.nemo-cluebar-label,
+.nautilus-cluebar-label {
+	color: @info_fg_color;
+	font: bold;
+}
+
+.nemo-cluebar-label:backdrop,
+.nautilus-cluebar-label:backdrop {
+	color: mix (@bg_color, @fg_color, 0.75);
+}
+
+MarlinViewWindow .scrollbar.trough,
+MarlinViewWindow .scrollbar.trough.vertical,
+MarlinViewWindow .scrollbar.trough.horizontal,
+NemoWindow .scrollbar.trough,
+NemoWindow .scrollbar.trough.vertical,
+NemoWindow .scrollbar.trough.horizontal,
+NautilusWindow .scrollbar.trough,
+NautilusWindow .scrollbar.trough.vertical,
+NautilusWindow .scrollbar.trough.horizontal {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (@fmmainview_bg_color),
+					to (@fmmainview_bg_color));
+	border-radius: 0;
+	border-color: @fmmainview_bg_color;
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (@fmmainview_bg_color),
+					to (@fmmainview_bg_color));
+}
+
+NemoFloatingBar,
+NemoFloatingBar GtkContainer,
+NemoWindow NemoFloatingBar,
+NemoWindow NemoFloatingBar GtkContainer,
+NautilusFloatingBar,
+NautilusFloatingBar GtkContainer,
+NautilusWindow NautilusFloatingBar,
+NautilusWindow NautilusFloatingBar GtkContainer,
+NemoFloatingBar:selected,
+NemoFloatingBar GtkContainer:selected,
+NemoWindow NemoFloatingBar:selected,
+NemoWindow NemoFloatingBar GtkContainer:selected,
+NautilusFloatingBar:selected,
+NautilusFloatingBar GtkContainer:selected,
+NautilusWindow NautilusFloatingBar:selected,
+NautilusWindow NautilusFloatingBar GtkContainer:selected,
+NemoFloatingBar:selected:focused,
+NemoFloatingBar GtkContainer:selected:focused,
+NemoWindow NemoFloatingBar:selected:focused,
+NemoWindow NemoFloatingBar GtkContainer:selected:focused,
+NautilusFloatingBar:selected:focused,
+NautilusFloatingBar GtkContainer:selected:focused,
+NautilusWindow NautilusFloatingBar:selected:focused,
+NautilusWindow NautilusFloatingBar GtkContainer:selected:focused,
+whatever {
+	background-color: shade (@info_bg_color, 1.05);
+	background-image: none;
+	color: @info_fg_color;
+	border-radius: 1px 1px 0 0;
+	border-style: solid;
+	border-width: 1px;
+	border-color: shade (@info_bg_color, 0.8);
+
+	-unico-border-gradient: none;
+}
+NemoFloatingBar .button,
+NautilusFloatingBar .button {
+	-GtkButton-image-spacing: 0;
+	-GtkButton-inner-border: 0;
+}
+
+NemoWindow column-header .button,
+NemoWindow column-header .button:active,
+NemoWindow .notebook column-header .button,
+NemoWindow .notebook column-header .button:active,
+NautilusWindow column-header .button,
+NautilusWindow column-header .button:active,
+NautilusWindow .notebook column-header .button,
+NautilusWindow .notebook column-header .button:active {
+	border-top-color: shade (@fmmainview_bg_color, 1.0);
+	border-right-color: shade (@fmmainview_bg_color, 0.9);
+	border-bottom-color: shade (@fmmainview_bg_color, 0.8);
+	border-left-color: shade (@fmmainview_bg_color, 0.9);
+	color: @fmmainview_fg_color;
+	-unico-inner-stroke-color: @transparent;
+	-unico-inner-stroke-gradient: none;
+	-unico-glow-color: @transparent;
+}
+NemoWindow column-header GtkContainer,
+NautilusWindow column-header GtkContainer {
+	color: inherit;
+}
+
+NemoWindow column-header .button,
+NemoWindow .notebook column-header .button,
+NautilusWindow column-header .button,
+NautilusWindow .notebook column-header .button {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fmmainview_bg_color, 1.0)),
+					to (shade (@fmmainview_bg_color, 0.925)));
+}
+
+NemoWindow column-header .button:hover,
+NemoWindow .notebook column-header .button:hover,
+NautilusWindow column-header .button:hover,
+NautilusWindow .notebook column-header .button:hover {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fmmainview_bg_color, 0.95)),
+					to (shade (@fmmainview_bg_color, 0.875)));
+}
+
+
+/**********************
+ * Main view notebook *
+ **********************/
+
+MarlinViewWindow .notebook,
+NemoWindow .notebook,
+NautilusWindow .notebook,
+.whateveryouwant {
+	border-radius: 0;
+}
+
+@define-color fm_notebook_bg_color		@fmmainview_bg_color;
+@define-color fm_notebook_fg_color		@fmmainview_fg_color;
+@define-color fm_notebook_inactive_bg_color	mix (@fmwindow_bg_color, @fm_notebook_bg_color, 0.75);
+@define-color fm_notebook_inactive_fg_color	@fm_notebook_fg_color;
+
+MarlinViewWindow .notebook,
+MarlinViewWindow .notebook:backdrop,
+NemoWindow .notebook,
+NemoWindow .notebook:backdrop,
+NautilusWindow .notebook,
+NautilusWindow .notebook:backdrop {
+	background-color: @fm_notebook_bg_color;
+	border-width: 0 0 0 0;
+	border-color: shade (@fm_notebook_bg_color, 0.80);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 0.80)),
+					to (@transparent));
+	-unico-inner-stroke-color: @transparent;
+	-unico-outer-stroke-width: 0;
+}
+
+MarlinViewWindow .notebook tab,
+MarlinViewWindow .notebook tab:backdrop,
+NemoWindow .notebook tab,
+NemoWindow .notebook tab:backdrop,
+NautilusWindow .notebook tab,
+NautilusWindow .notebook tab:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_inactive_bg_color, 0.93)),
+					color-stop (0.80, shade (@fm_notebook_inactive_bg_color, 0.91)),
+					to (shade (@fm_notebook_inactive_bg_color, 0.88)));
+	color: @fm_notebook_inactive_fg_color;
+	border-width: 1px 1px 0 1px;
+	border-color: shade (@fm_notebook_inactive_bg_color, 0.81);
+
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_inactive_bg_color, 0.82)),
+					to (shade (@fm_notebook_inactive_bg_color, 0.80)));
+	-unico-inner-stroke-color: @transparent;
+}
+MarlinViewWindow .notebook tab:active,
+MarlinViewWindow .notebook tab:active:backdrop,
+NemoWindow .notebook tab:active,
+NemoWindow .notebook tab:active:backdrop,
+NautilusWindow .notebook tab:active,
+NautilusWindow .notebook tab:active:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (@fm_notebook_bg_color),
+					to (@fm_notebook_bg_color));
+	color: @fm_notebook_fg_color;
+	border-width: 1px 0 0 0;
+	border-color: shade (@fm_notebook_bg_color, 0.82);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 0.84)),
+					to (shade (@fm_notebook_bg_color, 0.8)));
+}
+MarlinViewWindow .notebook tab GtkLabel,
+MarlinViewWindow .notebook tab GtkLabel:backdrop,
+NemoWindow .notebook tab GtkLabel,
+NemoWindow .notebook tab GtkLabel:backdrop,
+NautilusWindow .notebook tab GtkLabel,
+NautilusWindow .notebook tab GtkLabel:backdrop {
+	color: mix (@fm_notebook_bg_color, @fm_notebook_fg_color, 0.75);
+}
+MarlinViewWindow .notebook tab GtkLabel:active,
+MarlinViewWindow .notebook tab GtkLabel:active:backdrop,
+NemoWindow .notebook tab GtkLabel:active,
+NemoWindow .notebook tab GtkLabel:active:backdrop,
+NautilusWindow .notebook tab GtkLabel:active,
+NautilusWindow .notebook tab GtkLabel:active:backdrop {
+	color: @fm_notebook_fg_color;
+}
+
+/* Notebook tab button */
+MarlinViewWindow .notebook tab .button,
+MarlinViewWindow .notebook tab .button:backdrop,
+NemoWindow .notebook tab .button,
+NemoWindow .notebook tab .button:backdrop,
+NautilusWindow .notebook tab .button,
+NautilusWindow .notebook tab .button:backdrop {
+	transition: 0ms ease-in-out;
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 1.05)),
+					to (shade (@fm_notebook_bg_color, 0.95)));
+	border-style: solid;
+	color: mix (@fm_notebook_bg_color, @fm_notebook_fg_color, 0.5);
+	border-color: shade (@fm_notebook_bg_color, 0.675);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 0.75)),
+					to (shade (@fm_notebook_bg_color, 0.6)));
+	-unico-inner-stroke-color: shade (@fm_notebook_bg_color, 1.075);
+	-unico-inner-stroke-width: 1px 0 0 0;
+	-unico-outer-stroke-width: 0;
+}
+MarlinViewWindow .notebook tab .button:hover,
+MarlinViewWindow .notebook tab .button:hover:backdrop,
+NemoWindow .notebook tab .button:hover,
+NemoWindow .notebook tab .button:hover:backdrop,
+NautilusWindow .notebook tab .button:hover,
+NautilusWindow .notebook tab .button:hover:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 1.0)),
+					to (shade (@fm_notebook_bg_color, 0.9)));
+	color: @fm_notebook_fg_color;
+	border-color: shade (@fm_notebook_bg_color, 0.675);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 0.8)),
+					to (shade (@fm_notebook_bg_color, 0.65)));
+}
+MarlinViewWindow .notebook tab .button:active,
+MarlinViewWindow .notebook tab .button:active:hover,
+MarlinViewWindow .notebook tab .button:active:backdrop,
+MarlinViewWindow .notebook tab .button:active:hover:backdrop,
+NemoWindow .notebook tab .button:active,
+NemoWindow .notebook tab .button:active:hover,
+NemoWindow .notebook tab .button:active:backdrop,
+NemoWindow .notebook tab .button:active:hover:backdrop,
+NautilusWindow .notebook tab .button:active,
+NautilusWindow .notebook tab .button:active:hover,
+NautilusWindow .notebook tab .button:active:backdrop,
+NautilusWindow .notebook tab .button:active:hover:backdrop {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 0.8)),
+					to (shade (@fm_notebook_bg_color, 0.975)));
+	color: @fm_notebook_fg_color;
+	border-color: shade (@fm_notebook_bg_color, 0.725);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fm_notebook_bg_color, 0.75)),
+					to (shade (@fm_notebook_bg_color, 0.7)));
+	-unico-inner-stroke-color: shade (@fm_notebook_bg_color, 0.725);
+	-unico-focus-outer-stroke: @transparent;
+}
+
+
+
+/***********
+ * Sidebar *
+ ***********/
+
+MarlinViewWindow .sidebar,
+MarlinViewWindow .sidebar .view,
+MarlinViewWindow .sidebar:backdrop,
+MarlinViewWindow .sidebar .view:backdrop,
+NemoWindow .sidebar,
+NemoWindow .sidebar .view,
+NemoWindow .sidebar:backdrop,
+NemoWindow .sidebar .view:backdrop,
+NautilusWindow .sidebar,
+NautilusWindow .sidebar .view,
+NautilusWindow .sidebar:backdrop,
+NautilusWindow .sidebar .view:backdrop,
+.whatever {
+	-GtkTreeView-horizontal-separator: 0;
+	background-color: @fmsidebar_bg_color;
+	background-image: none;
+	color: @fmsidebarrow_fg_color;
+}
+MarlinViewWindow .sidebar:backdrop,
+MarlinViewWindow .sidebar .view:backdrop,
+NemoWindow .sidebar:backdrop,
+NemoWindow .sidebar .view:backdrop,
+NautilusWindow .sidebar:backdrop,
+NautilusWindow .sidebar .view:backdrop {
+	color: mix (@fmsidebarrow_fg_color, @fmsidebarrow_bg_color, 0.2);
+	text-shadow: none;
+}
+MarlinViewWindow .sidebar .frame,
+NemoWindow .sidebar .frame,
+NautilusWindow .sidebar .frame {
+	border-width: 1px 0;
+	border-color: @fmsidebar_border_top_color @fmsidebar_bg_color @fmsidebar_bg_color @fmsidebar_bg_color;
+	-unico-border-gradient: none;
+}
+
+
+/* sidebar selected item */
+MarlinViewWindow .sidebar row:selected,
+MarlinViewWindow .sidebar row:selected:backdrop,
+MarlinViewWindow .sidebar row:selected:focused,
+MarlinViewWindow .sidebar row:selected:focused:backdrop,
+NemoWindow .sidebar row:selected,
+NemoWindow .sidebar row:selected:backdrop,
+NemoWindow .sidebar row:selected:focused,
+NemoWindow .sidebar row:selected:focused:backdrop,
+NautilusWindow .sidebar row:selected,
+NautilusWindow .sidebar row:selected:backdrop,
+NautilusWindow .sidebar row:selected:focused,
+NautilusWindow .sidebar row:selected:focused:backdrop {
+	background-color: mix (@fmsidebarrow_active_fg_color, @fmsidebarrow_active_bg_color, 0.9);
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (mix (@fmsidebarrow_active_fg_color, @fmsidebarrow_active_bg_color, 0.9), 0.925)),
+					to (shade (mix (@fmsidebarrow_active_fg_color, @fmsidebarrow_active_bg_color, 0.9), 1.2)));
+	color: @fmsidebarrow_active_fg_color;
+	border-width: 1px 1px 1px 1px;
+	border-color: shade (@fmsidebarrow_bg_color, 0.85);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (mix (@fmsidebarrow_bg_color, @fmsidebarrow_active_bg_color, 0.5), 0.8)),
+					to (shade (mix (@fmsidebarrow_bg_color, @fmsidebarrow_active_bg_color, 0.5), 0.9)));
+	-unico-outer-stroke-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (alpha (shade (@fmsidebarrow_bg_color, 1.08), 0.5)),
+					to (alpha (shade (@fmsidebarrow_bg_color, 1.08), 0.5)));
+}
+MarlinViewWindow .sidebar row:selected:focused,
+MarlinViewWindow .sidebar GtkTreeView.view:selected:focused,
+NemoWindow .sidebar row:selected:focused,
+NemoWindow .sidebar GtkTreeView.view:selected:focused,
+NautilusWindow .sidebar row:selected:focused,
+NautilusWindow .sidebar GtkTreeView.view:selected:focused {
+	background-color: @fmsidebarrow_selected_bg_color;
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (shade (@fmsidebarrow_selected_bg_color, 0.925)),
+					to (shade (@fmsidebarrow_selected_bg_color, 1.2)));
+	color: @fmsidebarrow_selected_fg_color;
+	border-color: shade (@fmsidebarrow_selected_bg_color, 0.85);
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (shade (mix (@fmsidebarrow_bg_color, @fmsidebarrow_selected_bg_color, 0.5), 0.8)),
+					to (shade (mix (@fmsidebarrow_bg_color, @fmsidebarrow_selected_bg_color, 0.5), 0.9)));
+}
+MarlinViewWindow .sidebar row:selected:backdrop,
+MarlinViewWindow .sidebar row:selected:focused:backdrop,
+NemoWindow .sidebar row:selected:backdrop,
+NemoWindow .sidebar row:selected:focused:backdrop,
+NautilusWindow .sidebar row:selected:backdrop,
+NautilusWindow .sidebar row:selected:focused:backdrop {
+	background-color: mix (@fmsidebarrow_fg_color, @fmsidebarrow_bg_color, 0.9);
+	background-image: none;
+	color: @fmsidebarrow_fg_color;
+	-unico-border-gradient: none;
+}
+
+/* sidebar scrollbar */
+MarlinViewWindow .sidebar .scrollbar.trough,
+MarlinViewWindow .sidebar .scrollbar.trough.vertical,
+MarlinViewWindow .sidebar .scrollbar.trough.horizontal,
+NemoWindow .sidebar .scrollbar.trough,
+NemoWindow .sidebar .scrollbar.trough.vertical,
+NemoWindow .sidebar .scrollbar.trough.horizontal,
+NautilusWindow .sidebar .scrollbar.trough,
+NautilusWindow .sidebar .scrollbar.trough.vertical,
+NautilusWindow .sidebar .scrollbar.trough.horizontal {
+	background-image: -gtk-gradient (linear, left top, left bottom,
+					from (@fmsidebar_bg_color),
+					to (@fmsidebar_bg_color));
+	border-radius: 0;
+	border-color: @fmsidebar_bg_color;
+	-unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+					from (@fmsidebar_bg_color),
+					to (@fmsidebar_bg_color));
+}
+
+
+
+/*******************
+ * Primary toolbar *
+ *******************/
+
+MarlinViewWindow .menubar.toolbar GtkContainer,
+MarlinViewWindow .primary-toolbar GtkContainer,
+NemoWindow .primary-toolbar GtkContainer,
+NemoWindow .menubar.toolbar GtkContainer,
+NautilusWindow .menubar.toolbar GtkContainer,
+NautilusWindow .primary-toolbar GtkContainer {
+	color: inherit;
+}
+
